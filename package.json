@@ -1,0 +1,26 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "faux Amazon",
+  "main": "bamazon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leloan04/bamazon.git"
+  },
+  "keywords": [
+    "bamazon"
+  ],
+  "author": "Loan Le",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leloan04/bamazon/issues"
+  },
+  "homepage": "https://github.com/leloan04/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^5.0.1",
+    "mysql": "^2.15.0"
+  }
+}
