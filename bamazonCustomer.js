@@ -1,6 +1,5 @@
 var mysql = require('mysql');
 var inquirer = require('inquirer');
-// var prompt = require('prompt');
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -19,7 +18,7 @@ var connection = mysql.createConnection({
 
   var start = function() {
       connection.query('SELECT * from products', function(err, data) {
-        if (err) throw err;
+        // if (err) throw err;
             console.log("Welcome to Bamazon");
             console.log("Products Available:");
         for (var i = 0; i < data.length; i++) {
@@ -44,9 +43,10 @@ var connection = mysql.createConnection({
         }
       ])
       .then(function(answer) {
-          connection.query('SELECT stock_quantity, price FROM products WHERE item_id=' + answer.products, function(err, data) {
-              var price = parseFloat(data[0].price);
-              var stock = parseInt(data[0].stock_quantity);
+          connection.query('SELECT stock_quantity, price FROM products WHERE item_id=' + answer.products, function(err,data) {
+
+              var price = parseFloat(data[i].price);
+              var stock = parseInt(data[i].stock_quantity);
               var units = parseInt(answer.units);
             
               if(stock >= units) {
