@@ -32,7 +32,7 @@ var connection = mysql.createConnection({
   var firstPrompt = function() {
       inquirer.prompt([
         {
-            name: "Item",
+            name: "products",
             type: "input",
             message: "Enter the ID of the product you would like to buy"
         },
@@ -43,10 +43,10 @@ var connection = mysql.createConnection({
         }
       ])
       .then(function(answer) {
-          connection.query('SELECT stock_quantity, price FROM products WHERE item_id=' + answer.products, function(err,data) {
+          connection.query(`SELECT stock_quantity, price FROM products WHERE item_id='${answer.products}'`, function(err,data) {
 
-              var price = parseFloat(data[i].price);
-              var stock = parseInt(data[i].stock_quantity);
+              var price = parseFloat(data[0].price);
+              var stock = parseInt(data[0].stock_quantity);
               var units = parseInt(answer.units);
             
               if(stock >= units) {
@@ -70,7 +70,7 @@ var connection = mysql.createConnection({
   }
 
   function updateStockQuantity(stock, item_id) {
-      connection.query('UPDATE products SET stock_quantity = ' + stock + 'WHERE item_id = "' + item_id + '"', function(err, data) {
+      connection.query(`UPDATE products SET stock_quantity = ${stock} WHERE item_id = '${item_id}'`, function(err, data) {
       })
   }
 
